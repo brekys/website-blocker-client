@@ -4,7 +4,7 @@ import {useBlockItems} from '../model/use-block-items'
 import {TextField} from '@/shared/ui/text-field'
 import {Spinner} from '@/shared/ui/spinner'
 
-export function BlockList({className}: {className?: string}) {
+export function BlockList({className}: { className?: string }) {
     const {items, isLoading, query, setQuery} = useBlockItems()
 
     const isEmpty = !isLoading && !items.length
@@ -13,7 +13,11 @@ export function BlockList({className}: {className?: string}) {
 
     return (
         <div className={className}>
-            <TextField label='Search' inputProps={{value: query, onChange: changeHandler}} className='mb-2'/>
+            <TextField
+                label='Search'
+                inputProps={{value: query, onChange: changeHandler, placeholder: 'Enter text'}}
+                className='mb-2'
+            />
             <div className='rounded-xl bg-slate-100/50 px-10 py-6 flex flex-col gap-3'>
                 {isLoading && <Spinner className='text-teal-600 w-10 h-10 mx-auto'/>}
                 {isEmpty
